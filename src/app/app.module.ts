@@ -6,10 +6,11 @@ import { HttpModule, JsonModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ReportVoosComponent } from './report-voos/report-voos.component';
 
 @NgModule({
   declarations: [
-    AppComponent, DashboardComponent
+    AppComponent, DashboardComponent, ReportVoosComponent
   ],
   imports: [
     BrowserModule,
@@ -18,5 +19,5 @@ import { AppComponent } from './app.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
 
+export class AppModule { }
