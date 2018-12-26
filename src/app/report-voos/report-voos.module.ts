@@ -12,4 +12,5 @@ import  { ReportVoosComponent } from '.report.component';
     CursosComponent
   ]
 })
+
 export class ReportVoosModule { }
