@@ -2,15 +2,48 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
+export interface  PilotoElement{
+  id: number;
+  codigo: string;
+  nome: string;
+}
+
+export interface CidadeElement{
+  id: number;
+  codigo: string;
+  nome: string;
+  uf: string;
+}
+
+export interface AviaoElement{
+  id: number;
+  codigo: string;
+  descricao: string;
+}
+
+export interface VooElement {
+  id : number;
+  numero: number;
+  codigo: number;
+  horaSaida: string;
+  horaChegada: string;
+  status: string;
+  piloto: PilotoElement;
+  cidadeOrigem: CidadeElement;
+  cidadeDestino: CidadeElement;
+  aviao: AviaoElement;
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
 
+
 export class ReportVoosService {
 
-
-  restItems: any;
-  restItemsUrl = 'http://localhost:8081/empresa-aerea/';
+  restItems: VooElement[];
+  restItemsUrl = 'http://localhost:8081/empresa-aerea/voo';
 
   constructor(private http: HttpClient) {}
 
@@ -18,21 +51,21 @@ export class ReportVoosService {
     this.getRestItems();
   }
 
-    // Read all REST Items
-    getRestItems(): void {
-      this.restItemsServiceGetRestItems()
+  getRestItems(): void {
+    this.restServiceGetVoos()
         .subscribe(
           restItems => {
             this.restItems = restItems;
             console.log(this.restItems);
-          }
-        )
-    }
+          },
+          error => {
+            console.log(error)
+          })
+  }
 
-     // Rest Items Service: Read all REST Items
-  restItemsServiceGetRestItems() {
+  restServiceGetVoos() {
     return this.http
-      .get<any[]>(this.restItemsUrl)
+      .get<VooElement[]>(this.restItemsUrl)
       .pipe(map(data => data));
   }
 
