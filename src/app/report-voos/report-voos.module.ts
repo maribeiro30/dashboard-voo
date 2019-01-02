@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import  { ReportVoosComponent } from '.report.component';
+import  { ReportVoosComponent } from '.report-voos.component';
 
 @NgModule({
   declarations: [ReportVoosComponent],
