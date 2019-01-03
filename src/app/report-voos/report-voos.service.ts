@@ -35,7 +35,6 @@ export interface VooElement {
   aviao: AviaoElement;
 }
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -43,7 +42,7 @@ export interface VooElement {
 export class ReportVoosService {
 
   restItems: VooElement[];
-  restItemsUrl = 'http://localhost:8081/empresa-aerea/voo';
+  restItemsUrl = 'http://localhost:8089/empresa-aerea/voo';
 
   constructor(private http: HttpClient) {}
 
