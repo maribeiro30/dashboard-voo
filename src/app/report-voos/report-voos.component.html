@@ -3,28 +3,41 @@
 
   
   <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef> No. </th>
-    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  <ng-container matColumnDef="id" >
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{dataSource.id}} </td>
   </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  <ng-container matColumnDef="status" >
+      <th mat-header-cell *matHeaderCellDef> Situacao </th>
+      <td mat-cell *matCellDef="let element">{{dataSource.status}}</td>
   </ng-container>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <th mat-header-cell *matHeaderCellDef> Weight </th>
-    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+  <ng-container matColumnDef="numero" >
+      <th mat-header-cell *matHeaderCellDef> Nro. Voo </th>
+      <td mat-cell *matCellDef="let element">{{dataSource.numero}}</td>
+  </ng-container>
+  
+  <ng-container matColumnDef="cidadeorigem" >
+      <th mat-header-cell *matHeaderCellDef> Cidade Orig. </th>
+      <td mat-cell *matCellDef="let element">{{dataSource.cidadeOrigem}}</td>
+  </ng-container>
+  
+  <ng-container matColumnDef="cidadedestino" >
+      <th mat-header-cell *matHeaderCellDef> Cidade Dest. </th>
+      <td mat-cell *matCellDef="let element">{{dataSource.cidadeDestino}}</td>
   </ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  <ng-container matColumnDef="horasaida" >
+      <th mat-header-cell *matHeaderCellDef> Hr. Saida </th>
+      <td mat-cell *matCellDef="let element">{{dataSource.horaSaida}}</td>
   </ng-container>
+  
+  <ng-container matColumnDef="horachegada" >
+      <th mat-header-cell *matHeaderCellDef> Hr. Chegada </th>
+      <td mat-cell *matCellDef="let element">{{dataSource.horaChegada}}</td>
+  </ng-container>
+
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

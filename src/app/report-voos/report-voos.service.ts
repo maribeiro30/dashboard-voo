@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
 
 export interface  PilotoElement{
   id: number;
@@ -39,7 +40,6 @@ export interface VooElement {
   providedIn: 'root'
 })
 
-
 export class ReportVoosService {
 
   restItems: VooElement[];
@@ -51,22 +51,22 @@ export class ReportVoosService {
     this.getRestItems();
   }
 
-  getRestItems(): void {
-    this.restServiceGetVoos()
-        .subscribe(
-          restItems => {
-            this.restItems = restItems;
-            console.log(this.restItems);
-          },
-          error => {
-            console.log(error)
-          })
+  getRestItems(): Observable<VooElement[]> {
+      return this.http.get(this.restItemsUrl).pipe(
+        catchError(this.handleError),
+        map(this.jsonDataToVoos)
+        )
   }
 
-  restServiceGetVoos() {
-    return this.http
-      .get<VooElement[]>(this.restItemsUrl)
-      .pipe(map(data => data));
+  private handleError(error: any): Observable<any>{
+    console.log("Error na requisição=>",error);
+    return throwError(error);
+  }
+
+  private  jsonDataToVoos(jsonData: any): VooElement[] {
+      const voos: VooElement[] =[];
+      jsonData.forEach(element => voos.push(element as VooElement))
+      return voos;
   }
 
 }
