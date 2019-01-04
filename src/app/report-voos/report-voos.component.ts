@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ReportVoosService, VooElement } from './report-voos.service';
 
 
@@ -14,7 +15,7 @@ import { ReportVoosService, VooElement } from './report-voos.service';
 export class ReportVoosComponent  implements OnInit {
 
   displayedColumns: string[] = ['status', 'numero', 'cidadeorigem', 'cidadedestino', 'horasaida', 'horachegada' ];
-  dataSource : VooElement;
+  dataSource : VooElement[];
 
   constructor() { }
 

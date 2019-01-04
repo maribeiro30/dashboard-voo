@@ -7,6 +7,7 @@ import  { ReportVoosComponent } from './report-voos.component';
   declarations: [ReportVoosComponent],
   imports: [
     CommonModule
+    
   ],
   exports:[
     ReportVoosComponent
